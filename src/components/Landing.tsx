@@ -1,6 +1,10 @@
 import React from 'react'
+interface LandingProps {
+  heading: string;
+  message: string;
+}
 
-function Landing({ heading, message }) {
+function Landing({ heading, message }: LandingProps) {
   
   return (
     <div className='flex items-center justify-center h-screen mb-12 bg-fixed bg-center custom-img'>

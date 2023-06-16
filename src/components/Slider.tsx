@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { SliderData } from './Datas/SliderData';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.min.css';
 // Import Swiper styles
@@ -11,15 +10,15 @@ import { Autoplay, EffectCoverflow } from "swiper";
 
 
 
-const Slider = ({ slides }) => {
+const Slider = ({ slides }: any) => {  
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const handleSlideChange = (swiper) => {
-    const activeSlide = SliderData[swiper.realIndex];
+  const handleSlideChange = (swiper: any) => {
+    const activeSlide = slides[swiper.realIndex];
     const activeId = activeSlide.id;
     setCurrentSlide(swiper.realIndex);
-    console.log('Current Slide Id:', activeId);
+    
   };
   
 
@@ -30,7 +29,7 @@ const Slider = ({ slides }) => {
         <div
           className='absolute inset-0 z-1 blur-[8px] bg bg-cover bg-inherit transition-all duration-300'
           style={{
-            backgroundImage: `url(${SliderData[currentSlide].image})`,
+            backgroundImage: `url(${slides[currentSlide].image})`,
           }}
         ></div>
         <div
@@ -59,7 +58,7 @@ const Slider = ({ slides }) => {
                 }}
                 onSlideChange={handleSlideChange}
               >
-                {SliderData.map((slider, index) => (
+                {slides.map((slider: any, index: any) => (
                   <SwiperSlide key={index}>
                     <div className='h-full w-full rounded-lg'>
                       <img
