@@ -5,7 +5,7 @@ import { AiOutlinePlus } from 'react-icons/ai'
 
 const max_description = 550
 
-const BookModal = ({ item }) => {
+const BookModal = ({ item }: any) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
