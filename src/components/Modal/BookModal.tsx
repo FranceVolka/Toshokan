@@ -20,22 +20,24 @@ const BookModal = ({ item }: any) => {
     <>
       <div
         key={item.id}
-        className='max-w-sm rounded overflow-hidden shadow-lg cursor-pointer'
+        className='relative mx-[7px] my-[10px] overflow-hidden cursor-pointer'
         onClick={() => setIsModalOpen(true)}
       >
         
-        <Image
-          src={item.linkImg}
-          alt='/'
-          width={1000}
-          height={1000}
-          className='w-full h-[18rem] md:h-[20rem] lg:h-[22rem] object-cover'
-          quality={100}
-        />
+        <div className='relative h-[286px]'>
+          <Image
+            src={item.linkImg}
+            alt='/'
+            width={1000}
+            height={1000}
+            className='w-full h-[100%] object-cover rounded'
+            quality={100}
+          />
+        </div>
         
-        <div className='px-6 py-4'>
-          <div className='font-bold text-xl mb-2'>{item.title}</div>
-          <p className='text-gray-700 text-base'>{item.category}</p>
+        <div className='h-[80px]'>
+          <div className='font-bold text-base mb-2 mt-2 text-left'>{item.title}</div>
+          <p className='text-gray-700 text-sm text-left'>Chapter {item.chapters}</p>
         </div>
       </div>
 

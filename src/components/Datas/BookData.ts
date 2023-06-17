@@ -8,6 +8,7 @@ export const BookData = [
     category: 'Fantasy',
     linkImg:
       'https://kbimages1-a.akamaihd.net/2549815e-9024-4668-bf7d-ab167be95fb5/353/569/90/False/solo-leveling-vol-1-comic.jpg',
+    chapters: '125',
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ export const BookData = [
     category: 'Science-Fiction',
     linkImg:
       'https://kbimages1-a.akamaihd.net/3e17e6ab-5d58-44e5-bde7-7cb892faa9e4/353/569/90/False/kaiju-no-8-vol-2.jpg',
+      chapters: '58',
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ export const BookData = [
     category: 'Horror',
     linkImg:
       'https://kissmanga.org/mangaimage/manga-br979252.jpg',
+      chapters: '48',
   },
   {
     id: 4,
@@ -38,29 +41,10 @@ export const BookData = [
     category: 'Fantasy',
     linkImg:
       'https://kissmanga.org/mangaimage/manga-be979161.jpg',
+      chapters: '54',
   },
   {
     id: 5,
-    title: 'Cuphead',
-    sub_title: '',
-    description: '',
-    author: '',
-    category: 'Nintendo Switch',
-    linkImg:
-      'https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_auto/c_scale,w_300/v1/ncom/en_US/games/switch/c/cuphead-switch/hero?_a=AJADJWI0',
-  },
-  {
-    id: 6,
-    title: 'Minecraft',
-    sub_title: '',
-    description: '',
-    author: '',
-    category: 'Nintendo Switch',
-    linkImg:
-      'https://assets.nintendo.com/image/upload/ar_16:9,b_auto:border,c_lpad/b_white/f_auto/q_auto/dpr_auto/c_scale,w_300/v1/ncom/en_US/games/switch/m/minecraft-switch/hero?_a=AJADJWI0',
-  },
-  {
-    id: 7,
     title: 'Magnus Chase and the Gods of Asgard',
     sub_title: 'The Sword of Summer',
     description: `Magnus Chase, a homeless teenager, has just learned an impossible secret: he is the son of a Norse god. Now he must search for a weapon that will save the world or herald its doom. There’s just one little catch: to succeed, he first must die.`,
@@ -68,9 +52,10 @@ export const BookData = [
     category: 'Fantasy',
     linkImg:
       'https://www.readriordan.com/wp-content/uploads/2017/09/PR_ReadRiordan_MagnusChase_TheSwordOfSummer.jpg',
+    chapters: '28',
   },
   {
-    id: 8,
+    id: 6,
     title: 'Magnus Chase and the Gods of Asgard',
     sub_title: 'The Ship of the Dead',
     description: `Magnus Chase, a once-homeless teen, is now one of Odin’s chosen warriors. The son of Frey, god of peace, he isn’t a natural fighter. Yet he has defeated wolves, giants, and more. Now he’ll take on Loki and his Ship of the Dead. But his greatest enemy is his own inner demon.`,
@@ -78,5 +63,6 @@ export const BookData = [
     category: 'Fantasy',    
     linkImg:
       'https://www.readriordan.com/wp-content/uploads/2017/09/PR_ReadRiordan_MagnusChase_TheShipOfTheDead.jpg',
+      chapters: '23',
   },
 ];
