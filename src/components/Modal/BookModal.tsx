@@ -25,9 +25,12 @@ const BookModal = ({ item }: any) => {
       >
         
         <div className='relative h-[286px]'>
+          <div className='absolute w-full z-[1] h-full top-0 rounded hover:bg-[rgba(0,0,0,.51)]'>
+
+          </div>
           <Image
             src={item.linkImg}
-            alt='/'
+            alt={item.title}
             width={1000}
             height={1000}
             className='w-full h-[100%] object-cover rounded'

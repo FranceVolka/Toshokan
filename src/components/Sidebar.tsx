@@ -75,6 +75,12 @@ const Sidebar = () => {
                       <h2 className='text-[.98em] font-[600] mb-1 leading-[1.4em]'>
                         {item.title}
                       </h2>
+                      <span className='font-[.9em] text-[#888] mb-[5px] overflow-hidden text-ellipsis'>
+                        Genres: 
+                        <a className='text-[#333] hover:text-neutral-400 cursor-pointer'>
+                          {item.category}
+                        </a>
+                      </span>
                     </div>
                   </li>
                 )
