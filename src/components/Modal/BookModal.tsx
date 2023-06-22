@@ -1,13 +1,15 @@
-import React, { PureComponent, useState, Fragment } from 'react'
+import React, { PureComponent, useState, Fragment, useContext } from 'react'
 import Image from 'next/image';
 import { Transition } from '@headlessui/react';
 import { AiOutlinePlus } from 'react-icons/ai'
+import ThemeContext from '../Service/ThemeContext';
 
 const max_description = 550
 
 const BookModal = ({ item }: any) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const { darkMode }:any = useContext(ThemeContext)
 
   const showlessDesc = item.description.slice(0, max_description);
   const showAllDesc = item.description.slice(max_description);
@@ -33,14 +35,14 @@ const BookModal = ({ item }: any) => {
             alt={item.title}
             width={1000}
             height={1000}
-            className='w-full h-[100%] object-cover rounded'
+            className='w-full h-full object-cover rounded'
             quality={100}
           />
         </div>
         
         <div className='h-[80px]'>
           <div className='font-bold text-base mb-2 mt-2 text-left'>{item.title}</div>
-          <p className='text-gray-700 text-sm text-left'>Chapter {item.chapters}</p>
+          <p className={`text-sm text-left ${darkMode ? 'text-white' : 'text-gray-700'}`}>Chapter {item.chapters}</p>
         </div>
       </div>
 

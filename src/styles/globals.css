@@ -17,3 +17,25 @@ html {
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
 }
+
+/* Dark Theme */
+.dark {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+.dark-secondary {
+  background-color: #222;
+  color: #f9fafb;
+}
+
+/* Light Theme */
+.light {
+  background-color: #eef0f2;
+  color: #1f2937;
+}
+
+.light-secondary {
+  background-color: #fff;
+  color: #1f2937;
+}

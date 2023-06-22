@@ -1,9 +1,11 @@
-import React, {useEffect, useRef, useState,} from 'react'
+import React, {useContext, useEffect, useRef, useState,} from 'react'
 import Link from 'next/link'
 import classNames from 'classnames';
 import { AiOutlineMenu , AiOutlineClose, AiOutlineCaretDown, AiOutlineCaretUp, AiOutlineSearch,} from 'react-icons/ai'
+import { FaRegSun, FaRegMoon } from 'react-icons/fa'
 import { MdOutlineBookmark, MdOutlineAccountCircle } from 'react-icons/md'
 import { GenreData } from './Datas/GenreData'
+import ThemeContext from './Service/ThemeContext';
 
  
 function Navbar() {
@@ -11,6 +13,12 @@ function Navbar() {
   const [color, setColor] = useState('transparent')
   const [textColor, setTextColor] = useState('white')
   const [dropdown, setDropdown] = useState(false);  
+  const { darkMode, setDarkMode }:any = useContext(ThemeContext);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
 
   const handleNav = () => {
     setNav(!nav)
@@ -34,11 +42,13 @@ function Navbar() {
   }, [])
   
 
+  console.log(darkMode);
+  
   return (
     <div style={{ backgroundColor: `${color}` }} className='fixed left-0 top-0 w-full z-10 ease-in duration-300'>
       <div className='max-w-[1240px] m-auto flex items-center pt-4 px-4 text-white'>
         <Link href='/'>
-          <h1 style={{ color: `${textColor}` }} className='font-bold text-3xl px-4'>Library</h1>
+          <h1 style={{ color: `${textColor}` }} className='font-bold text-3xl px-4'>Toshokan</h1>
         </Link>
         <ul style={{ color: `${textColor}` }} className='hidden sm:flex'>
           <li className='p-4'>
@@ -105,8 +115,7 @@ function Navbar() {
                   Genre
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-4'>
-                  {GenreData.sort((a, b) => a.genre.localeCompare(b.genre)).map((item, index) => {
-                    console.log(item);
+                  {GenreData.sort((a, b) => a.genre.localeCompare(b.genre)).map((item, index) => {                    
                     return(
                       <div className='w-full py-3 px-5 text-sm hover:bg-[#23252b] cursor-pointer' key={index}>
                         <Link href=''>
@@ -130,7 +139,7 @@ function Navbar() {
             <Link href='/contact'>Contact</Link>
           </li>
         </ul>
-        <div className='hidden sm:flex sm:ml-auto' style={{ color: `${textColor}` }}>
+        <div className='hidden sm:flex sm:ml-auto' style={{ color: `${textColor}` }}>          
           <Link href='/' className='py-4 px-3'>
             <AiOutlineSearch size={25}></AiOutlineSearch>
           </Link>
@@ -140,6 +149,29 @@ function Navbar() {
           <div className='py-4 px-3 cursor-pointer'>
             <MdOutlineAccountCircle size={25}></MdOutlineAccountCircle>
           </div>
+          <div className="flex justify-end items-center space-x-2 mx-auto relative">            
+            <div>
+              <input 
+                type="checkbox" 
+                name="" 
+                id="checkbox" 
+                className="hidden" 
+                checked={darkMode}
+                onChange={toggleDarkMode}
+              />
+              <label htmlFor="checkbox" className="cursor-pointer">
+                <div className="w-12 h-6 flex items-center bg-gray-300 rounded-full p2">
+                  <div
+                    className={`w-6 h-6 rounded-full shadow transition-transform relative ${
+                      darkMode ? `translate-x-6 bg-black` : `bg-black`
+                    }`}                                        
+                  >
+                    {!darkMode ? <FaRegSun className='absolute top-1 left-1 transition-transform duration-100 text-white' /> : <FaRegMoon className='absolute top-1 left-1 transition-transform duration-100 text-white'/>}
+                  </div>
+                </div>
+              </label>
+            </div>            
+          </div>          
         </div>
         
 

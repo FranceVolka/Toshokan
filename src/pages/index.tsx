@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Head from 'next/head'
 import Landing from '@/components/Landing'
 import Slider from '@/components/Slider'
@@ -6,11 +6,12 @@ import { SliderData } from '@/components/Datas/SliderData'
 import Books from '@/components/Books'
 import Footer from '@/components/Footer'
 import Sidebar from '@/components/Sidebar'
+import ThemeContext from '@/components/Service/ThemeContext'
 
 const Home = () => { 
-
+  const { darkMode }:any = useContext(ThemeContext)
   return (
-    <div className='bg-[#eef0f2] text-black'>
+    <div className={`${darkMode ? 'dark' : 'light'}`}>
       <Head>
         <title>Home Page</title>
       </Head>
