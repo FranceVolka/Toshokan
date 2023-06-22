@@ -25,10 +25,10 @@ const Instagram = () => {
       </div>
       <div id='fantasy' className={`my-5 rounded-md shadow-lg ${darkMode ? 'dark-secondary' : 'light-secondary'}`}>
         <p className='relative flex justify-between align-baseline border-b-2 border-[#e7e7e7] text-2xl font-bold text-left p-4'>Latest Update</p>               
-        <div className='grid grid-cols-2 gap-2'>
+        <div className='grid grid-cols-2'>
           {BookData.map((item, index) => {
             return (
-              <div key={item.id} className='relative flex flex-row p-4 w-full'>
+              <div key={item.id} className='relative flex flex-row p-4 border-b-[1px] border-[#e7e7e7] w-full'>
                 <div className='relative h-[200px] mr-[10px]'>
                   <Image 
                     src={item.linkImg}
@@ -39,10 +39,18 @@ const Instagram = () => {
                     className={`w-full h-full object-cover`}
                   />
                 </div>
-                <div className='flex flex-row text-start'>
+                <div className='flex flex-col text-start'>
                   <a className='hover:text-gray-600 w-full text-base font-bold leading-[1.5] cursor-pointer'>
-                    {item.title}
+                    <h4>{item.title}</h4>
                   </a>
+                  <ul className='mt-[10px] pl-[15px] list-disc'>
+                    <li className='text-base mb-[10px] text-[#9d4942]'>
+                      <a className={`text-[#999] font-medium cursor-pointer float-left overflow-hidden text-ellipsis whitespace-nowrap ${darkMode ? 'hover:text-white transition hover:duration-300 ease-in-out' : ''}`}>
+                        Chapter 69
+                      </a>
+                      <span className='float-right text-xs text-[#555]'>15 Hours ago</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             )
