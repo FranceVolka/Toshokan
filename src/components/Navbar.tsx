@@ -31,18 +31,26 @@ function Navbar() {
   useEffect(() => {
     const changeColor = () => {
       if(window.scrollY >= 90) {
-        setColor('#ffffff')
-        setTextColor('#000000')
+        console.log(darkMode);
+        
+        if (!darkMode) {
+          setColor('#ffffff')
+          setTextColor('#000000')
+        } else {
+          setColor('#222')
+          setTextColor('#ffffff')
+        }
       } else {
         setColor('transparent')
         setTextColor('#ffffff')
       }
     }
-    window.addEventListener('scroll', changeColor)    
-  }, [])
-  
-
-  console.log(darkMode);
+    window.addEventListener('scroll', changeColor)   
+    
+    return () => {
+      window.removeEventListener('scroll', changeColor);
+    };
+  }, [darkMode])
   
   return (
     <div style={{ backgroundColor: `${color}` }} className='fixed left-0 top-0 w-full z-10 ease-in duration-300'>
@@ -73,18 +81,7 @@ function Navbar() {
               'absolute top-full left-0 w-screen shadow-lg overflow-hidden transition-all duration-300',
               { 'max-h-0': !dropdown, 'max-h-screen bg-neutral-900 text-white': dropdown }
             )}
-          >
-            {/* <ul style={{ color: `${textColor}` }}>
-              <li>
-                <Link
-                  scroll={false}
-                  href="#fantasy"
-                  className={`block px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 ${dropdown ? 'text-white' : ''}`}
-                >
-                  Fantasy
-                </Link>
-              </li>                
-            </ul> */}
+          >            
             <div className='flex flex-col md:flex-row mx-[30rem] px-[40px] pt-[35px] pb-[20px]'>
               <div className='flex flex-col pr-10 flex-[0_0_15rem]'>
                 <ul>

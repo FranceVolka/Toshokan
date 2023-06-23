@@ -12,7 +12,7 @@ const Instagram = () => {
   return (
     <div className='w-full mx-auto text-center '>
       <div id='fantasy' className={`my-5 rounded-md shadow-lg ${darkMode ? 'dark-secondary' : 'light-secondary'}`}>
-        <p className='relative flex justify-between align-baseline border-b-2 border-[#e7e7e7] text-2xl font-bold text-left p-4'>Popular Today</p>               
+        <p className={`relative flex justify-between align-baseline border-b-2 text-2xl font-bold text-left p-4 ${darkMode ? 'border-[#312f40]' : 'border-[#e7e7e7]'}`}>Popular Today</p>               
         <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 pt-4 px-3'>
           {BookData.map((item, index) => {
             if (item.category === 'Fantasy') {                          
@@ -24,12 +24,12 @@ const Instagram = () => {
         </div>
       </div>
       <div id='fantasy' className={`my-5 rounded-md shadow-lg ${darkMode ? 'dark-secondary' : 'light-secondary'}`}>
-        <p className='relative flex justify-between align-baseline border-b-2 border-[#e7e7e7] text-2xl font-bold text-left p-4'>Latest Update</p>               
-        <div className='grid grid-cols-2'>
+        <p className={`relative flex justify-between align-baseline border-b-2 text-2xl font-bold text-left p-4 ${darkMode ? 'border-[#312f40]' : 'border-[#e7e7e7]'}`}>Latest Update</p>               
+        <div className='grid grid-cols-1 md:grid-cols-2'>
           {BookData.map((item, index) => {
             return (
-              <div key={item.id} className='relative flex flex-row p-4 border-b-[1px] border-[#e7e7e7] w-full'>
-                <div className='relative h-[200px] mr-[10px]'>
+              <div key={item.id} className={`relative flex flex-row p-4 w-full ${index === BookData.length - 1 ? '' : 'border-b-[1px]'} ${darkMode ? 'border-[#312f40]' : 'border-[#e7e7e7]'} ${index >= BookData.length - 2 ? 'lg:border-b-0' : ''} ${index === BookData.length - 1 ? 'sm:border-b-0' : ''}`}>
+                <div className='relative h-[200px] mr-[10px] w-[50%]'>
                   <Image 
                     src={item.linkImg}
                     alt={item.title}
@@ -39,14 +39,20 @@ const Instagram = () => {
                     className={`w-full h-full object-cover`}
                   />
                 </div>
-                <div className='flex flex-col text-start'>
+                <div className='flex flex-col text-start w-full'>
                   <a className='hover:text-gray-600 w-full text-base font-bold leading-[1.5] cursor-pointer'>
                     <h4>{item.title}</h4>
                   </a>
                   <ul className='mt-[10px] pl-[15px] list-disc'>
-                    <li className='text-base mb-[10px] text-[#9d4942]'>
+                    <li className=' text-base mb-[10px] text-[#9d4942]'>
                       <a className={`text-[#999] font-medium cursor-pointer float-left overflow-hidden text-ellipsis whitespace-nowrap ${darkMode ? 'hover:text-white transition hover:duration-300 ease-in-out' : ''}`}>
                         Chapter 69
+                      </a>
+                      <span className='float-right text-xs text-[#555]'>15 Hours ago</span>
+                    </li>
+                    <li className=' text-base mb-[10px] text-[#9d4942]'>
+                      <a className={`text-[#999] font-medium cursor-pointer float-left overflow-hidden text-ellipsis whitespace-nowrap ${darkMode ? 'hover:text-white transition hover:duration-300 ease-in-out' : ''}`}>
+                        Chapter 68
                       </a>
                       <span className='float-right text-xs text-[#555]'>15 Hours ago</span>
                     </li>

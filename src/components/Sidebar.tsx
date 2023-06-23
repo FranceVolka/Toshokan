@@ -15,7 +15,7 @@ const Sidebar = () => {
   return (
     <div className='relative'>
       <div className={`m-0 lg:ml-4 mb-[18px] shadow-lg rounded-md ${darkMode ? 'dark-secondary' : 'light-secondary'}`}>
-        <div className='relative flex justify-between align-baseline py-2 px-4 border-b-2 border-[#e7e7e7]'>
+        <div className={`relative flex justify-between align-baseline py-2 px-4 border-b-2 ${darkMode ? 'border-[#312f40]' : 'border-[#e7e7e7]'}`}>
           <h3 className='font-bold'>Popular</h3>
         </div>
         <div className='relative'>
@@ -57,7 +57,7 @@ const Sidebar = () => {
             <ul>
               {BookData.map((item, index) => {                
                 return (
-                  <li key={index} className={`relative px-[15px] py-[12px] white whitespace-normal overflow-hidden ${index === BookData.length - 1 ? '' : 'border-b-2 border-[#e7e7e7]'} text-sm`}>
+                  <li key={index} className={`relative px-[15px] py-[12px] white whitespace-normal overflow-hidden ${index === BookData.length - 1 ? '' : 'border-b-2'} ${darkMode ? 'border-[#312f40]' : 'border-[#e7e7e7]'} text-sm`}>
                     <div className={`absolute w-[25px] h-[25px] text-center leading-6 text-base top-[30px] left-[15px] border-[0.5px] rounded ${darkMode ? 'border-white' : 'border-neutral-900'}`}>
                       {item.id}
                     </div>
