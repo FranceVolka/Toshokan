@@ -127,14 +127,8 @@ function Navbar() {
           </div>
           
           <li className='p-4'>
-            <Link href='/#gallery' scroll={false} >Gallery</Link>
-          </li>
-          <li className='p-4'>
-            <Link href='/work'>Work</Link>
-          </li>
-          <li className='p-4'>
-            <Link href='/contact'>Contact</Link>
-          </li>
+            <Link href='/anime' >Anime</Link>
+          </li>          
         </ul>
         <div className='hidden sm:flex sm:ml-auto' style={{ color: `${textColor}` }}>          
           <Link href='/' className='py-4 px-3'>

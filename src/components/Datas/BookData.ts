@@ -1,6 +1,7 @@
 export const BookData = [
   {
     id: 1,
+    slug: 'solo-leveling',
     title: 'Solo Leveling',
     sub_title: '나 혼자만 레벨업',
     description: '10 years ago, after “the Gate” that connected the real world with the monster world opened, some of the ordinary, everyday people received the power to hunt monsters within the Gate. They are known as "Hunters". However, not all Hunters are powerful. My name is Sung Jin-Woo, an E-rank Hunter. I\'m someone who has to risk his life in the lowliest of dungeons, the "World\'s Weakest". Having no skills whatsoever to display, I barely earned the required money by fighting in low-leveled dungeons… at least until I found a hidden dungeon with the hardest difficulty within the D-rank dungeons! In the end, as I was accepting death, I suddenly received a strange power, a quest log that only I could see, a secret to leveling up that only I know about! If I trained in accordance with my quests and hunted monsters, my level would rise. Changing from the weakest Hunter to the strongest S-rank Hunter!',
@@ -13,6 +14,7 @@ export const BookData = [
   {
     id: 2,
     title: 'Kaiju No. 8',
+    slug: 'kaiju-no-8',
     sub_title: '8Kaijuu ; Kaiju No. 8 ; Monster #8 ; 怪獣８号',
     description: `A man, unhappy with the work he has had to do in life, is involved in an unexpected event ...!He becomes a Kaijuu, a monstrous creature, giving him a new chance to achieve what he always dreamed of!Italian /Italiano:  Un uomo, infelice del lavoro che deve fare per il resto della sua vita, rimane coinvolto in un evento inaspettato...!Si è trasformato in un kaiju, una creatura mostruosa, che gli darà un'altra opportunità per raggiungere ciò che ha sempre sognato!`,
     author: 'Matsumoto Naoya',
@@ -24,6 +26,7 @@ export const BookData = [
   {
     id: 3,
     title: 'Pumpkin Night',
+    slug: 'pumpkin-night',
     sub_title: '',
     description: '',
     author: '',
@@ -35,6 +38,7 @@ export const BookData = [
   {
     id: 4,
     title: 'Berserk of Gluttony',
+    slug: 'berserk-of-gluttony',
     sub_title: '',
     description: '',
     author: '',
@@ -46,6 +50,7 @@ export const BookData = [
   {
     id: 5,
     title: 'Magnus Chase and the Gods of Asgard',
+    slug: 'magnus-chase-sword-of-summer',
     sub_title: 'The Sword of Summer',
     description: `Magnus Chase, a homeless teenager, has just learned an impossible secret: he is the son of a Norse god. Now he must search for a weapon that will save the world or herald its doom. There’s just one little catch: to succeed, he first must die.`,
     author: 'Rick Riordan',
@@ -57,6 +62,7 @@ export const BookData = [
   {
     id: 6,
     title: 'Magnus Chase and the Gods of Asgard',
+    slug: 'magnus-chase-the-ship-of-the-dead',
     sub_title: 'The Ship of the Dead',
     description: `Magnus Chase, a once-homeless teen, is now one of Odin’s chosen warriors. The son of Frey, god of peace, he isn’t a natural fighter. Yet he has defeated wolves, giants, and more. Now he’ll take on Loki and his Ship of the Dead. But his greatest enemy is his own inner demon.`,
     author: 'Rick Riordan',

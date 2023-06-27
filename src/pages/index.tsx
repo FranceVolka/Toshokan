@@ -15,7 +15,7 @@ const Home = () => {
       <Head>
         <title>Home Page</title>
       </Head>
-      <Landing heading='Welcome to Library' message={`"A book is a garden, an orchard, a storehouse, a party, <br>a company by the way, a counselor, a multitude of counselors." <br><br>– Charles Baudelaire`}/>
+      <Landing heading='Welcome to Toshokan' message={`"A book is a garden, an orchard, a storehouse, a party, <br>a company by the way, a counselor, a multitude of counselors." <br><br>– Charles Baudelaire`}/>
       <div className='relative mx-auto max-w-[1240px] overflow-hidden'>
         <div className='float-left w-full lg:w-[70%]'>
           <Slider slides={SliderData}/>
@@ -24,8 +24,7 @@ const Home = () => {
         <div className='float-right w-full lg:w-[30%] overflow-visible box-border'>
           <Sidebar />
         </div>
-      </div>
-      <Footer />
+      </div>      
     </div>
   )
 }
