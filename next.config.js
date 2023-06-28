@@ -12,6 +12,7 @@ module.exports = {
       'www.google.com',
       'www.readriordan.com',
       'kissmanga.org',
+      'uploads.mangadex.org',
     ]
   }
 }

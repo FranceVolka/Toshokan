@@ -8,30 +8,30 @@ import { useGlobalContext } from '../Service/ApiData';
 const max_description = 550
 
 const BookModal = ({ item }: any) => {
-  console.log(item);
+  console.log('bookmodal: ', item);
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const { darkMode }:any = useContext(ThemeContext)
-  const {getMangaCover, image} =useGlobalContext()
 
-  const showlessDesc = typeof item.attributes.description === 'string'
-  ? item.attributes.description.slice(0, max_description)
+  const showlessDesc = typeof item.attributes.description.en === 'string'
+  ? item.attributes.description.en.slice(0, max_description)
   : '';
 
-  const showAllDesc = typeof item.attributes.description === 'string'
-  ? item.attributes.description.slice(max_description)
+  const showAllDesc = typeof item.attributes.description.en === 'string'
+  ? item.attributes.description.en.slice(max_description)
   : '';
 
-  React.useEffect(() => {
-    getMangaCover(item.relationships[2].id);
-  }, [item.relationships[2].id]); 
-
-  console.log(image);
-  
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
   }
+
+  const coverArt = item.relationships
+  let cover_image = coverArt.find((item:any) => item.type === 'cover_art')
+
+ 
+  
 
   return (
     <>
@@ -46,8 +46,8 @@ const BookModal = ({ item }: any) => {
 
           </div>
           <Image
-            src={`/${item.relationships[3]?.attributes?.fileName}`}
-            alt={item.title}
+            src={`https://uploads.mangadex.org/covers/${item.id}/${cover_image.attributes.fileName}`}
+            alt={item.attributes.title.en}
             width={1000}
             height={1000}
             className='w-full h-full object-cover rounded'
@@ -56,7 +56,7 @@ const BookModal = ({ item }: any) => {
         </div>
         
         <div className='h-[80px]'>
-          <div className='font-bold text-base mb-2 mt-2 text-left'>{item.attributes.title.en}</div>
+          <div className='font-bold text-base mb-2 mt-2 text-left'>{ item.attributes.title.en ?? item.attributes.title.ja }</div>
           <p className={`text-sm text-left ${darkMode ? 'text-white' : 'text-gray-700'}`}>Chapter {item.chapters}</p>
         </div>
       </div>
@@ -88,7 +88,7 @@ const BookModal = ({ item }: any) => {
                 <div className='max-h-full'>
                   {/* <img src={item.linkImg} alt="Image" className="max-w-full h-auto"/> */}                  
                   <Image
-                    src={item.linkImg}
+                    src={`https://uploads.mangadex.org/covers/${item.id}/${cover_image.attributes.fileName}`}
                     alt='/'
                     width={1000}
                     height={1000}
@@ -98,7 +98,7 @@ const BookModal = ({ item }: any) => {
                 </div>
                 <div className='relative w-full h-auto flex flex-col text-center align-middle'>
                   <div className='text-2xl font-bold'>
-                    {item.title}
+                    {item.attributes.title.en}
                   </div>
                   <div className='text-xs'>
                     {item.sub_title}

@@ -31,8 +31,6 @@ function Navbar() {
   useEffect(() => {
     const changeColor = () => {
       if(window.scrollY >= 90) {
-        console.log(darkMode);
-        
         if (!darkMode) {
           setColor('#ffffff')
           setTextColor('#000000')
