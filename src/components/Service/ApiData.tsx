@@ -88,7 +88,7 @@ export const GlobalContextProvider = ({children}:any) => {
   //fetch Manga
   const getLatestManga = async () => {
     dispatch({type: LOADING})
-    const response = await fetch(`${baseUrl}/manga?includes[]=author&includes[]=artist&includes[]=cover_art&limit=20&order[latestUploadedChapter]=desc`)
+    const response = await fetch(`${baseUrl}/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=20&order[latestUploadedChapter]=desc`)
     const data = await response.json();
     dispatch({type: GET_MANGA, payload: data.data})
   }
@@ -96,7 +96,7 @@ export const GlobalContextProvider = ({children}:any) => {
   //fetch popular Manga
   const getPopularManga = async () => {
     dispatch({type: LOADING})
-    const response = await fetch(`${baseUrl}/manga?includes[]=author&includes[]=artist&includes[]=cover_art&limit=4&order[followedCount]=desc`)
+    const response = await fetch(`${baseUrl}/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=4&order[followedCount]=desc`)
     const data = await response.json();
     dispatch({type: GET_POPULAR_MANGA, payload: data.data})
   }

@@ -8,18 +8,32 @@ import { useGlobalContext } from './Service/ApiData';
 
 const Instagram = () => {  
   const { darkMode }:any = useContext(ThemeContext)
-  const { manga } = useGlobalContext();
-  const { popular_manga } = useGlobalContext();
+  const { manga, chapter, popular_manga } = useGlobalContext();
+  
+  const mergeData:any = []
+  manga.map((manga_item) => {
+    chapter.map((chapter_item) => {
+      if (manga_item.id === chapter_item.relationships[1].id) {
+        let data = {chapter: chapter_item, manga: manga_item};
+        mergeData.push(data)
+      }
+    })
+  })
 
-  console.log(popular_manga);
+  console.log(mergeData);
+  
+
+
+
+
   return (
     <div className='w-full mx-auto text-center '>
       <div id='fantasy' className={`my-5 rounded-md shadow-lg ${darkMode ? 'dark-secondary' : 'light-secondary'}`}>
         <p className={`relative flex justify-between align-baseline border-b-2 text-2xl font-bold text-left p-4 ${darkMode ? 'border-[#312f40]' : 'border-[#e7e7e7]'}`}>Popular Today</p>               
         <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 pt-4 px-3'>
-          {popular_manga.map((item, index) => {
+          {mergeData.slice(0, 4).map((item:any , index:any) => {
             console.log(item);
-            if (popular_manga.length >= 3) {                          
+            if (mergeData.length >= 3) {                          
               return <BookModal item={item} key={index} />;
             } else {
               return null
