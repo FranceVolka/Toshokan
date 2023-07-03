@@ -14,12 +14,12 @@ const BookModal = ({ item }: any) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { darkMode }:any = useContext(ThemeContext)
 
-  const showlessDesc = typeof item.manga.attributes.description.en === 'string'
-  ? item.manga.attributes.description.en.slice(0, max_description)
+  const showlessDesc = typeof item?.manga?.attributes?.description?.en === 'string'
+  ? item?.manga?.attributes?.description?.en.slice(0, max_description)
   : '';
 
-  const showAllDesc = typeof item.manga.attributes.description.en === 'string'
-  ? item.manga.attributes.description.en.slice(max_description)
+  const showAllDesc = typeof item?.manga?.attributes?.description?.en === 'string'
+  ? item?.manga?.attributes?.description?.en.slice(max_description)
   : '';
 
 
@@ -27,8 +27,8 @@ const BookModal = ({ item }: any) => {
     setIsExpanded(!isExpanded);
   }
 
-  const coverArt = item.manga.relationships
-  let cover_image = coverArt.find((item:any) => item.type === 'cover_art')
+  const coverArt = item?.manga?.relationships
+  let cover_image = coverArt.find((item:any) => item?.type === 'cover_art')
 
   console.log(cover_image);
   
@@ -44,7 +44,7 @@ const BookModal = ({ item }: any) => {
           <div className='absolute w-full z-[1] h-full top-0 rounded hover:bg-[rgba(0,0,0,.51)]'>
           </div>
           <Image
-            src={`https://uploads.mangadex.org/covers/${item.manga.id}/${cover_image.attributes.fileName}`}
+            src={`https://uploads.mangadex.org/covers/${item?.manga?.id}/${cover_image?.attributes.fileName}`}
             alt={item.manga.attributes.title.en}
             width={1000}
             height={1000}
@@ -54,8 +54,8 @@ const BookModal = ({ item }: any) => {
         </div>
         
         <div className='h-auto'>
-          <div className='font-bold text-base mb-2 mt-2 text-left text-ellipsis overflow-hidden whitespace-nowrap'>{ item.manga.attributes.title.en ?? item.manga.attributes.title.ja }</div>
-          <p className={`text-sm text-left ${darkMode ? 'text-white' : 'text-gray-700'}`}>Chapter {item.chapter.attributes.chapter}</p>
+          <div className='font-bold text-base mb-2 mt-2 text-left text-ellipsis overflow-hidden whitespace-nowrap'>{ item?.manga?.attributes?.title?.en ?? item?.manga?.attributes?.title?.ja }</div>
+          <p className={`text-sm text-left ${darkMode ? 'text-white' : 'text-gray-700'}`}>Chapter {item?.chapter?.attributes?.chapter}</p>
         </div>
       </div>
 
@@ -86,7 +86,7 @@ const BookModal = ({ item }: any) => {
                 <div className='max-h-full'>
                   {/* <img src={item.linkImg} alt="Image" className="max-w-full h-auto"/> */}                  
                   <Image
-                    src={`https://uploads.mangadex.org/covers/${item.manga.id}/${cover_image.attributes.fileName}`}
+                    src={`https://uploads.mangadex.org/covers/${item?.manga?.id}/${cover_image?.attributes?.fileName}`}
                     alt='/'
                     width={1000}
                     height={1000}
@@ -96,7 +96,7 @@ const BookModal = ({ item }: any) => {
                 </div>
                 <div className='relative w-full h-auto flex flex-col text-center align-middle'>
                   <div className='text-2xl font-bold'>
-                    {item.manga.attributes.title.en}
+                    {item?.manga?.attributes?.title?.en}
                   </div>
                   <div className='text-xs'>
                     {item.sub_title}
@@ -110,8 +110,8 @@ const BookModal = ({ item }: any) => {
                   <div className='text-left p-4 overflow-hidden text-ellipsis'>
                     <span className='text-base'>Summary: </span>
                     <p className='whitespace-pre-line'>
-                      {isExpanded ? item.manga.attributes.description.en : showlessDesc}
-                      {item.manga.attributes.description.en.length > max_description && (
+                      {isExpanded ? item?.manga?.attributes?.description?.en : showlessDesc}
+                      {item?.manga?.attributes?.description?.en?.length > max_description && (
                         <span className='text-gray-500'>
                           {isExpanded ? '' : '... '}
                           <button
