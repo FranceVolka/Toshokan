@@ -19,8 +19,7 @@ const Slider = ({ slides }: any) => {
     const activeId = activeSlide.id;
     setCurrentSlide(swiper.realIndex);
     
-  };
-  
+  };  
 
   return (
     <div className='w-full text-center relative h-[330px] md:h-[50%]'>

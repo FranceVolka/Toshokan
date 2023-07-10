@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useState,} from 'react'
+import React, {useContext, useEffect, useLayoutEffect, useRef, useState,} from 'react'
 import Link from 'next/link'
 import classNames from 'classnames';
 import { AiOutlineMenu , AiOutlineClose, AiOutlineCaretDown, AiOutlineCaretUp, AiOutlineSearch,} from 'react-icons/ai'
@@ -28,7 +28,7 @@ function Navbar() {
     setDropdown(!dropdown)
   }
   
-  useEffect(() => {
+  useLayoutEffect(() => {
     const changeColor = () => {
       if(window.scrollY >= 90) {
         if (!darkMode) {
