@@ -55,6 +55,16 @@ const reducer = (state: any, action: any) => {
   }
 };
 
+//create request
+  const api = axios.create({
+    baseURL: baseUrl,
+    timeout: 3000,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    }
+  })
+
 export const GlobalContextProvider = ({ children }: any) => {
   //initial state of the app
   const initalState = {
@@ -94,7 +104,7 @@ export const GlobalContextProvider = ({ children }: any) => {
   const getLatestManga = async () => {
     dispatch({ type: LOADING });
     try {
-      const response = await axios.get(
+      const response = await api.get(
         `${baseUrl}/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=20&order[latestUploadedChapter]=desc`
       );
       const data = response.data;
@@ -109,7 +119,7 @@ export const GlobalContextProvider = ({ children }: any) => {
   const getPopularManga = async () => {
     dispatch({ type: LOADING });
     try {
-    const response = await axios.get(`${baseUrl}/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=4&order[followedCount]=desc`)
+    const response = await api.get(`${baseUrl}/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=4&order[followedCount]=desc`)
     const data = response.data;
     dispatch({type: GET_POPULAR_MANGA, payload: data.data})
   } catch (error) {
@@ -130,7 +140,7 @@ export const GlobalContextProvider = ({ children }: any) => {
   const getMangaChapters = async (id: any) => {
     dispatch({ type: LOADING });
     try {
-      const response = await axios.get(
+      const response = await api.get(
         `${baseUrl}/manga/${id}/feed?limit=96&includes[]=scanlation_group&includes[]=user&order[volume]=desc&order[chapter]=desc&offset=0&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&contentRating[]=pornographic&translatedLanguage[]=en`
       );
       const data = response.data;
