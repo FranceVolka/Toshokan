@@ -7,11 +7,10 @@ import Link from 'next/link';
 import { useGlobalContext } from './Service/ApiData';
 import LatestManga from './Modal/LatestManga';
 
-const Instagram = ({ mangaList }: any) => {  
+const Instagram = () => {  
   const { darkMode }:any = useContext(ThemeContext)
   const { manga, chapter, popular_manga } = useGlobalContext();
-
-  console.log(mangaList);
+  
   
   const mergeData:any = []
   manga.map((manga_item) => {
@@ -51,6 +50,5 @@ const Instagram = ({ mangaList }: any) => {
     </div>
   )
 }
-
 
 export default Instagram

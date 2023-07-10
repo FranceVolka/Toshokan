@@ -62,7 +62,7 @@ const reducer = (state: any, action: any) => {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
-    }
+    },
   })
 
 export const GlobalContextProvider = ({ children }: any) => {
@@ -105,7 +105,7 @@ export const GlobalContextProvider = ({ children }: any) => {
     dispatch({ type: LOADING });
     try {
       const response = await api.get(
-        `${baseUrl}/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=20&order[latestUploadedChapter]=desc`
+        `/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=20&order[latestUploadedChapter]=desc`
       );
       const data = response.data;
       dispatch({ type: GET_MANGA, payload: data.data });
@@ -119,7 +119,7 @@ export const GlobalContextProvider = ({ children }: any) => {
   const getPopularManga = async () => {
     dispatch({ type: LOADING });
     try {
-    const response = await api.get(`${baseUrl}/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=4&order[followedCount]=desc`)
+    const response = await api.get(`/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=4&order[followedCount]=desc`)
     const data = response.data;
     dispatch({type: GET_POPULAR_MANGA, payload: data.data})
   } catch (error) {
@@ -141,7 +141,7 @@ export const GlobalContextProvider = ({ children }: any) => {
     dispatch({ type: LOADING });
     try {
       const response = await api.get(
-        `${baseUrl}/manga/${id}/feed?limit=96&includes[]=scanlation_group&includes[]=user&order[volume]=desc&order[chapter]=desc&offset=0&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&contentRating[]=pornographic&translatedLanguage[]=en`
+        `/manga/${id}/feed?limit=96&includes[]=scanlation_group&includes[]=user&order[volume]=desc&order[chapter]=desc&offset=0&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&contentRating[]=pornographic&translatedLanguage[]=en`
       );
       const data = response.data;
       dispatch({ type: GET_MANGA_CHAPTER, payload: data.data });
