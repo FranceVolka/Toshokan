@@ -26,6 +26,7 @@ const GlobalContext = createContext<{
 });
 
 const baseUrl = "https://api.mangadex.org";
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
 //actions
 const LOADING = "LOADING";
@@ -104,10 +105,14 @@ export const GlobalContextProvider = ({ children }: any) => {
   const getLatestManga = async () => {
     dispatch({ type: LOADING });
     try {
-      const response = await api.get(
-        `/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=20&order[latestUploadedChapter]=desc`
-      );
-      const data = response.data;
+      
+      const apiUrl = 'https://api.mangadex.org/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=20&order[latestUploadedChapter]=desc';
+      
+      // const response = await api.get(
+      //   `/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=20&order[latestUploadedChapter]=desc`
+      // );
+      const response = await fetch(proxyUrl + apiUrl);
+      const data = await response.json();
       dispatch({ type: GET_MANGA, payload: data.data });
     } catch (error) {
       console.log(error);
@@ -119,8 +124,10 @@ export const GlobalContextProvider = ({ children }: any) => {
   const getPopularManga = async () => {
     dispatch({ type: LOADING });
     try {
-    const response = await api.get(`/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=4&order[followedCount]=desc`)
-    const data = response.data;
+    const apiUrl = `${baseUrl}/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=4&order[followedCount]=desc`;
+    // const response = await api.get(`/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=4&order[followedCount]=desc`)
+    const response = await fetch(proxyUrl + apiUrl);
+    const data = await response.json();
     dispatch({type: GET_POPULAR_MANGA, payload: data.data})
   } catch (error) {
     console.log(error);
@@ -160,7 +167,7 @@ export const GlobalContextProvider = ({ children }: any) => {
 
   React.useEffect(() => {
     getLatestManga();
-    getPopularManga()
+    getPopularManga();
     // getChapters()
   }, []);
 

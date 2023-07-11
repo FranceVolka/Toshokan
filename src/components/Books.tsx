@@ -11,7 +11,6 @@ const Instagram = () => {
   const { darkMode }:any = useContext(ThemeContext)
   const { manga, chapter, popular_manga } = useGlobalContext();
   
-  
   const mergeData:any = []
   manga.map((manga_item) => {
     chapter.map((chapter_item) => {
