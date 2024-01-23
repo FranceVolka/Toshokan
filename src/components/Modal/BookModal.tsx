@@ -8,12 +8,10 @@ import { useGlobalContext } from '../Service/ApiData';
 const max_description = 550
 
 const BookModal = ({ item }: any) => {
-  console.log('bookmodal: ', item);
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const { darkMode }:any = useContext(ThemeContext)
-  // const {getMangaChapters, mangaChapter} = useGlobalContext()
 
   const showlessDesc = typeof item?.attributes?.description?.en === 'string'
   ? item?.attributes?.description?.en.slice(0, max_description)
@@ -31,11 +29,7 @@ const BookModal = ({ item }: any) => {
   const coverArt = item?.relationships
   let cover_image = coverArt?.find((item:any) => item?.type === 'cover_art')
 
-  // useEffect(() => {
-  //   getMangaChapters(item?.id)
-  // }, [getMangaChapters, item?.id])
-
-  // mangaChapter
+  
   return (
     <>
       <div
@@ -58,11 +52,10 @@ const BookModal = ({ item }: any) => {
         </div>
         
         <div className='h-auto'>
-          <div className='font-bold text-base mb-2 mt-2 text-left text-ellipsis overflow-hidden whitespace-nowrap'>{ item?.attributes?.title?.en ?? item?.attributes?.title?.ja }</div>
-          <p className={`text-sm text-left ${darkMode ? 'text-white' : 'text-gray-700'}`}>Chapter {item?.chapter?.attributes?.chapter}</p>
+          <div className='font-bold text-base mb-2 mt-2 text-left text-ellipsis overflow-hidden whitespace-nowrap'>{item?.attributes?.title?.en ?? item?.attributes?.title['ja-ro']}</div>
+          <p className={`text-sm text-left ${darkMode ? 'text-white' : 'text-gray-700'}`}>{item?.attributes?.status}</p>
         </div>
       </div>
-
       <Transition show={isModalOpen} as={Fragment}>
         <div className='fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-25 backdrop-blur-[2px] overflow-x-hidden overflow-y-auto'>          
           <div className='relative bg-white p-8 mx-4 rounded-lg shadow-xl w-full max-w-4xl max-h-full'>
@@ -100,7 +93,7 @@ const BookModal = ({ item }: any) => {
                 </div>
                 <div className='relative w-full h-auto flex flex-col text-center align-middle'>
                   <div className='text-2xl font-bold'>
-                    {item?.attributes?.title?.en}
+                    {item?.attributes?.title?.en ?? item?.attributes?.title['ja-ro']}
                   </div>
                   <div className='text-xs'>
                     {item.sub_title}

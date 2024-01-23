@@ -2,13 +2,13 @@ export const SliderData = [
   {
     id: 1,	  
     image:
-      'https://kbimages1-a.akamaihd.net/2549815e-9024-4668-bf7d-ab167be95fb5/353/569/90/False/solo-leveling-vol-1-comic.jpg',
+      'https://cdn.kobo.com/book-images/ef8112fe-15c4-4d30-bc4e-91914c30afa7/1200/1200/False/solo-leveling-vol-2-comic.jpg',
     title: 'Solo Leveling',
   },
   {
     id: 2,
     image:
-      'https://kbimages1-a.akamaihd.net/3e17e6ab-5d58-44e5-bde7-7cb892faa9e4/353/569/90/False/kaiju-no-8-vol-2.jpg',
+      'https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/Kaiju_No_8.jpg/220px-Kaiju_No_8.jpg',
     title: 'Kaiju No. 8',
   },
   {

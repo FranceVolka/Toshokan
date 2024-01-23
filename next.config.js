@@ -13,6 +13,8 @@ module.exports = {
       'www.readriordan.com',
       'kissmanga.org',
       'uploads.mangadex.org',
+      'cdn.kobo.com',
+      'upload.wikimedia.org',
     ]
   }
 }

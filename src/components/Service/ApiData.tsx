@@ -11,7 +11,7 @@ const GlobalContext = createContext<{
   loading: boolean;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   getManga: () => Promise<void>;
-  getMangaCover: (id: any) => Promise<void>;
+  getMangaChapters: (id: any) => Promise<void>;
 }>({
   manga: [],
   popular_manga: [],
@@ -22,7 +22,7 @@ const GlobalContext = createContext<{
   loading: false,
   handleChange: () => {},
   getManga: async () => {},
-  getMangaCover: async (id) => {},
+  getMangaChapters: async (id) => {},
 });
 
 const baseUrl = "https://api.mangadex.org";
@@ -106,7 +106,7 @@ export const GlobalContextProvider = ({ children }: any) => {
     dispatch({ type: LOADING });
     try {
       
-      const apiUrl = 'https://api.mangadex.org/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=20&order[latestUploadedChapter]=desc';
+      const apiUrl = `${baseUrl}/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=20&order[latestUploadedChapter]=desc`;
       
       // const response = await api.get(
       //   `/manga?includes[]=tag&includes[]=author&includes[]=artist&includes[]=cover_art&limit=20&order[latestUploadedChapter]=desc`
@@ -136,21 +136,34 @@ export const GlobalContextProvider = ({ children }: any) => {
   }
 
   //fetch manga chapter
-  // const getChapters = async () => {
-  //   dispatch({type: LOADING})
-  //   const response = await fetch(`${baseUrl}/chapter?includes[]=scanlation_group&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&order[readableAt]=desc&limit=64`)
-  //   const data = await response.json();
-  //   dispatch({type: GET_CHAPTER, payload: data.data})
-  // }
+  const getChapters = async (id: any) => {
+    dispatch({type: LOADING})
+    // const response = await fetch(`${baseUrl}/chapter?includes[]=scanlation_group&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&order[readableAt]=desc&limit=64`)
+    // const data = await response.json();
+    try {
+      const apiUrl = `${baseUrl}/chapter?manga=${id}includes[]=manga&limit=5`;
+      const response = await fetch(proxyUrl + apiUrl);
+      const data = await response.json();
+      dispatch({type: GET_CHAPTER, payload: data.data})
+    } catch (error) {
+      console.log(error);
+      // Handle the error
+    }
+
+  }
+  
 
   //fetch selected manga chapters
   const getMangaChapters = async (id: any) => {
     dispatch({ type: LOADING });
     try {
+      // const apiUrl = `${baseUrl}/manga/${id}/feed?limit=96&includes[]=scanlation_group&includes[]=user&order[volume]=desc&order[chapter]=desc&offset=0&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&contentRating[]=pornographic&translatedLanguage[]=en`;
       const response = await api.get(
-        `/manga/${id}/feed?limit=96&includes[]=scanlation_group&includes[]=user&order[volume]=desc&order[chapter]=desc&offset=0&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&contentRating[]=pornographic&translatedLanguage[]=en`
+        `/manga/${id}/feed?limit=5&includes[]=scanlation_group&includes[]=user&order[volume]=asc&order[chapter]=asc&offset=0&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&contentRating[]=pornographic&translatedLanguage[]=en`
       );
       const data = response.data;
+      // const response = await fetch(proxyUrl + apiUrl);
+      // const data = await response.json();
       dispatch({ type: GET_MANGA_CHAPTER, payload: data.data });
     } catch (error) {
       console.log(error);
@@ -178,7 +191,7 @@ export const GlobalContextProvider = ({ children }: any) => {
         handleChange,
         getLatestManga,
         getPopularManga,
-        // getChapters,
+        getChapters,
         getMangaChapters,
         // getMangaCover,
       }}

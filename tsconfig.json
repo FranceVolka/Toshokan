@@ -19,6 +19,6 @@
     },
     "types": ["react-click-outside"],
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/api/baseApi.ts"],
   "exclude": ["node_modules"]
 }
